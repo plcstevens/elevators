@@ -1,0 +1,21 @@
+Elevator System
+	has many elevators
+	
+	users can ask for elevator from it to go to specific floor
+Elevators
+	belongs to elevator_system
+	belongs to floor
+	has many users
+
+	when asked by elevator system changes floor
+	when asked by users inside changes floor
+Floor
+	has many users
+	has many elevators
+User
+	belongs to floor
+	belongs to elevator
+
+	when asks for elevator system gets an elevator
+	when askes for floor elevator goes there
+

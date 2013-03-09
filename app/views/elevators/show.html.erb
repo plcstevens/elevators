@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Elevator system:</b>
+  <%= @elevator.elevator_system %>
+</p>
+
+<p>
+  <b>Floor:</b>
+  <%= @elevator.floor %>
+</p>
+
+
+<%= link_to 'Edit', edit_elevator_path(@elevator) %> |
+<%= link_to 'Back', elevators_path %>

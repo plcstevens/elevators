@@ -1,0 +1,21 @@
+<h1>Listing elevator_systems</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @elevator_systems.each do |elevator_system| %>
+  <tr>
+    <td><%= link_to 'Show', elevator_system %></td>
+    <td><%= link_to 'Edit', edit_elevator_system_path(elevator_system) %></td>
+    <td><%= link_to 'Destroy', elevator_system, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Elevator system', new_elevator_system_path %>

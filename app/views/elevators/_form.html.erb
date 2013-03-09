@@ -1,0 +1,25 @@
+<%= form_for(@elevator) do |f| %>
+  <% if @elevator.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@elevator.errors.count, "error") %> prohibited this elevator from being saved:</h2>
+
+      <ul>
+      <% @elevator.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :elevator_system %><br />
+    <%= f.text_field :elevator_system %>
+  </div>
+  <div class="field">
+    <%= f.label :floor %><br />
+    <%= f.text_field :floor %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
