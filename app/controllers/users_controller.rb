@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    params[:user][:floor] = Floor.where(params[:user][:floor]).first if params[:user][:floor]
     @user = User.new(params[:user])
 
     respond_to do |format|
@@ -57,6 +58,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    params[:user][:floor] = Floor.where(params[:user][:floor]).first if params[:user][:floor]
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

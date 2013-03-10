@@ -24,7 +24,7 @@ describe FloorsController do
   # Floor. As you add validations to Floor, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "number" => "1" }
+    FactoryGirl.attributes_for(:floor)
   end
 
   # This should return the minimal set of values that should be in the session
@@ -36,9 +36,9 @@ describe FloorsController do
 
   describe "GET index" do
     it "assigns all floors as @floors" do
-      floor = Floor.create! valid_attributes
+      floors = Floor.all
       get :index, {}, valid_session
-      assigns(:floors).should eq([floor])
+      assigns(:floors).should eq(floors)
     end
   end
 

@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    floor nil
-    elevator nil
+    name { Faker::Name.name }
+    floor Floor.first
   end
 end

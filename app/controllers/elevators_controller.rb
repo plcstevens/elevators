@@ -57,6 +57,7 @@ class ElevatorsController < ApplicationController
   # PUT /elevators/1.json
   def update
     @elevator = Elevator.find(params[:id])
+    params[:elevator][:floor] = Floor.find(params[:elevator][:floor]) if params[:elevator][:floor]
 
     respond_to do |format|
       if @elevator.update_attributes(params[:elevator])

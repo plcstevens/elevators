@@ -24,7 +24,7 @@ describe ElevatorsController do
   # Elevator. As you add validations to Elevator, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { "elevator_system" => "" }
+    FactoryGirl.attributes_for(:elevator)
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe ElevatorsController do
       it "assigns a newly created but unsaved elevator as @elevator" do
         # Trigger the behavior that occurs when invalid params are submitted
         Elevator.any_instance.stub(:save).and_return(false)
-        post :create, {:elevator => { "elevator_system" => "invalid value" }}, valid_session
+        post :create, {:elevator => { }}, valid_session
         assigns(:elevator).should be_a_new(Elevator)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Elevator.any_instance.stub(:save).and_return(false)
-        post :create, {:elevator => { "elevator_system" => "invalid value" }}, valid_session
+        post :create, {:elevator => { }}, valid_session
         response.should render_template("new")
       end
     end
@@ -105,13 +105,14 @@ describe ElevatorsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested elevator" do
+        floor    = Floor.first
         elevator = Elevator.create! valid_attributes
         # Assuming there are no other elevators in the database, this
         # specifies that the Elevator created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Elevator.any_instance.should_receive(:update_attributes).with({ "elevator_system" => "" })
-        put :update, {:id => elevator.to_param, :elevator => { "elevator_system" => "" }}, valid_session
+        Elevator.any_instance.should_receive(:update_attributes).with({ "floor" => floor })
+        put :update, {:id => elevator.to_param, :elevator => { "floor" => floor }}, valid_session
       end
 
       it "assigns the requested elevator as @elevator" do
@@ -132,7 +133,7 @@ describe ElevatorsController do
         elevator = Elevator.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Elevator.any_instance.stub(:save).and_return(false)
-        put :update, {:id => elevator.to_param, :elevator => { "elevator_system" => "invalid value" }}, valid_session
+        put :update, {:id => elevator.to_param, :elevator => { "floor" => Floor.first }}, valid_session
         assigns(:elevator).should eq(elevator)
       end
 
@@ -140,7 +141,7 @@ describe ElevatorsController do
         elevator = Elevator.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Elevator.any_instance.stub(:save).and_return(false)
-        put :update, {:id => elevator.to_param, :elevator => { "elevator_system" => "invalid value" }}, valid_session
+        put :update, {:id => elevator.to_param, :elevator => { "floor" => Floor.first }}, valid_session
         response.should render_template("edit")
       end
     end
