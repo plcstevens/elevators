@@ -1,1 +1,6 @@
 <p id="notice"><%= notice %></p>
+
+<h1>Elevator System</h1>
+<% @elevator_system.elevators.each do |elevator| %>
+    <%= elevator.floor.number %>
+<% end %>
