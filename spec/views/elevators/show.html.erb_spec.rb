@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "elevators/show" do
   before(:each) do
     @elevator = assign(:elevator, stub_model(Elevator,
-      :elevator_system => nil,
-      :floor => nil
+      :elevator_system => ElevatorSystem.first,
+      :floor => Floor.first
     ))
   end
 

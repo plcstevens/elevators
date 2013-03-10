@@ -1,4 +1,7 @@
 class ElevatorsController < ApplicationController
+
+  before_filter :find_floor, only: [:create, :update]
+
   # GET /elevators
   # GET /elevators.json
   def index
@@ -40,6 +43,7 @@ class ElevatorsController < ApplicationController
   # POST /elevators
   # POST /elevators.json
   def create
+    params[:elevator][:floor] = Floor.find(params[:elevator][:floor]) if params[:elevator][:floor]
     @elevator = Elevator.new(params[:elevator])
 
     respond_to do |format|
@@ -57,7 +61,6 @@ class ElevatorsController < ApplicationController
   # PUT /elevators/1.json
   def update
     @elevator = Elevator.find(params[:id])
-    params[:elevator][:floor] = Floor.find(params[:elevator][:floor]) if params[:elevator][:floor]
 
     respond_to do |format|
       if @elevator.update_attributes(params[:elevator])
@@ -80,5 +83,11 @@ class ElevatorsController < ApplicationController
       format.html { redirect_to elevators_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def find_floor
+    params[:elevator][:floor] = Floor.find(params[:elevator][:floor]) if params[:elevator][:floor]
   end
 end

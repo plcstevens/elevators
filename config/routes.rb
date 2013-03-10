@@ -1,13 +1,9 @@
 Elevators::Application.routes.draw do
+  root to: 'elevator_systems#show', id: 1
+
   resources :users
-
-
   resources :elevators
-
-
-  resources :elevator_systems
-
-
+  resources :elevator_systems, only: :show
   resources :floors
 
 

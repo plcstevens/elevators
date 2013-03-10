@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :elevator do
+    floor Floor.first
   end
 end

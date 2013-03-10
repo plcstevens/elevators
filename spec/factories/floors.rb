@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :floor do
-    number 1
+    number { rand(20) }
   end
 end

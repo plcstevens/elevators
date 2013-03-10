@@ -11,8 +11,13 @@
 
 <% @elevators.each do |elevator| %>
   <tr>
-    <td><%= elevator.elevator_system %></td>
-    <td><%= elevator.floor %></td>
+    <td>
+      <%= link_to elevator.elevator_system, elevator_system_path(elevator.elevator_system) %>
+    </td>
+
+    <td>
+      <%= link_to "Floor: #{elevator.floor.number}", floor_path(elevator.floor) %>
+    </td>
     <td><%= link_to 'Show', elevator %></td>
     <td><%= link_to 'Edit', edit_elevator_path(elevator) %></td>
     <td><%= link_to 'Destroy', elevator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
