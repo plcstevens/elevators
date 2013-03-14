@@ -8,4 +8,12 @@ describe "Elevators" do
       page.should have_content(elevator.floor.number)
     end
   end
+
+  describe "GET /elevator" do
+    it "displays an elevator" do
+      elevator = FactoryGirl.create(:elevator)
+      visit elevator_path elevator
+      page.should have_content(elevator.floor.number)
+    end
+  end
 end
