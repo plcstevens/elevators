@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :elevator do
-    floor Floor.first
+    floor Floor.find_or_create_by_number(1)
   end
 end
